@@ -63,6 +63,7 @@ $this->title = 'web开发者的该驻足的地方！';
             <div class="col-lg-8">
                 <h2>PHPer</h2>
                 <div class="show-grid clearfix">
+                  <div class="row">
                     <div class="col-lg-8">
                         <div class="input-group show-grid">
                         <span class="input-group-addon">php.net</span>
@@ -94,19 +95,40 @@ $this->title = 'web开发者的该驻足的地方！';
                             </ul>
                         </div>
                     </div>
+                  </div>
                 </div>
                 <div class="show-grid">
-                    <ul class="list-group">                    
-                      <a href="http://www.baidu.com" class="list-group-item">
-                        <span class="badge">热</span>
-                        Cras justo odio
-                      </a>
-                      <a href="http://www.baidu.com" class="list-group-item">
-                        <span class="badge">荐</span>
-                        Cras justo odio
-                      </a>
-                    </ul>
-                    
+                    <div class="panel panel-default">
+                      <div class="panel-heading">PHP导航</div>
+                      <ul class="list-group">
+                        <li class="list-group-item">
+                          <strong>权威网站：</strong>
+                          <a type="button" class="label label-primary" href="http://www.php.net">PHP官网</a>
+                          <a type="button" class="label label-info" href="http://www.php.net">PHP内核</a>
+                          <a type="button" class="label label-info" href="http://www.w3school.com.cn/php/">w3cschool的PHP教程</a>
+                        </li>
+                        <li class="list-group-item">
+                          <strong>框架相关：</strong>
+                          <a type="button" class="label label-primary" href="http://www.golaravel.com/">laravel中文网</a>
+                          <a type="button" class="label label-info" href="https://laravel.com/">laravel English Site</a>
+                          <a type="button" class="label label-info" href="http://www.w3school.com.cn/php/">w3cschool的PHP教程</a>
+                        </li>
+                        <li class="list-group-item">
+                          <a href="http://www.baidu.com" class="btn-small btn-link">
+                            <span class="badge bg-primary">荐</span>
+                            PHP7.0正式发布，让我们看一看~
+                          </a>
+                        </li>
+                        <li class="list-group-item">
+                          <a href="http://www.baidu.com" class="btn-small btn-link">
+                            <span class="badge bg-success">热</span>
+                            PHP7.0正式发布，让我们看一看~
+                          </a>
+                        </li>
+                        <li class="list-group-item">Porta ac consectetur ac</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                      </ul>
+                    </div>
                     <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">更多</a></p>
                 </div>
             </div>
