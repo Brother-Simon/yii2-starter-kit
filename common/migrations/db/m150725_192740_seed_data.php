@@ -58,8 +58,8 @@ class m150725_192740_seed_data extends Migration
 
         $this->insert('{{%page}}', [
             'slug' => 'about',
-            'title' => 'About',
-            'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'title' => '关于我',
+            'body' => '关于我就是我，免贵姓马，单字一欢！',
             'status' => \common\models\Page::STATUS_PUBLISHED,
             'created_at' => time(),
             'updated_at' => time(),
