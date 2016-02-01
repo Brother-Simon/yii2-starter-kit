@@ -112,7 +112,7 @@ $this->title = 'web开发者的该驻足的地方！';
                           <strong>框架相关：</strong>
                           <a type="button" class="label label-primary" href="http://www.golaravel.com/">laravel中文网</a>
                           <a type="button" class="label label-info" href="https://laravel.com/">laravel English Site</a>
-                          <a type="button" class="label label-info" href="http://www.w3school.com.cn/php/">w3cschool的PHP教程</a>
+                          <a type="button" class="label label-info" href="http://www.yiichina.com/doc/guide/2.0">yii2官方中文教程</a>
                         </li>
                         <li class="list-group-item">
                           <a href="http://www.baidu.com" class="btn-small btn-link">
@@ -303,6 +303,90 @@ $this->title = 'web开发者的该驻足的地方！';
                 </div>
             </div>
             
+            <div class="show-grid">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">优秀开源方案</div>
+                    <ul class="list-group">
+                      <li class="list-group-item">
+                        <strong>oto类：</strong>
+                        <a type="button" class="label label-primary" href="http://www.wstmall.com/">wstmall</a>
+                        <a type="button" class="label label-info" href="http://www.php.net">PHP内核</a>
+                        <a type="button" class="label label-info" href="http://www.w3school.com.cn/php/">w3cschool的PHP教程</a>
+                      </li>
+                      <li class="list-group-item">
+                        <strong>知名博客：</strong>
+                        <a type="button" class="label label-primary" href="http://www.zhangxinxu.com/" target="_blank">张鑫旭</a>
+                        <a type="button" class="label label-info" href="http://www.jq22.com/">http://www.jq22.com/</a>
+                        <a type="button" class="label label-info" href="http://www.w3school.com.cn/php/">w3cschool的PHP教程</a>
+                      </li>
+                      <li class="list-group-item">
+                        <strong>资源网站：</strong>
+                        <a type="button" class="label label-primary" href="http://www.jq22.com/" target="_blank">jQuery插件大集合</a>
+                        <a type="button" class="label label-info" href="http://www.jq22.com/">http://www.jq22.com/</a>
+                        <a type="button" class="label label-info" href="http://www.w3school.com.cn/php/">w3cschool的PHP教程</a>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="http://www.baidu.com" class="btn-small btn-link">
+                          <span class="badge bg-primary">荐</span>
+                          PHP7.0正式发布，让我们看一看~
+                        </a>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="http://www.baidu.com" class="btn-small btn-link">
+                          <span class="badge bg-success">热</span>
+                          PHP7.0正式发布，让我们看一看~
+                        </a>
+                      </li>
+                      <li class="list-group-item">Porta ac consectetur ac</li>
+                      <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                  </div>
+                  <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">更多</a></p>
+                </div>
+            </div>
+            <div class="show-grid">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">wap开发</div>
+                    <ul class="list-group">
+                      <li class="list-group-item">
+                        <strong>微信:</strong>
+                        <a type="button" class="label label-primary" href="http://easywechat.org/">微信api</a>
+                        <a type="button" class="label label-info" href="http://www.php.net">PHP内核</a>
+                        <a type="button" class="label label-info" href="http://www.w3school.com.cn/php/">w3cschool的PHP教程</a>
+                      </li>
+                      <li class="list-group-item">
+                        <strong>知名博客：</strong>
+                        <a type="button" class="label label-primary" href="http://www.zhangxinxu.com/" target="_blank">张鑫旭</a>
+                        <a type="button" class="label label-info" href="http://www.jq22.com/">http://www.jq22.com/</a>
+                        <a type="button" class="label label-info" href="http://www.w3school.com.cn/php/">w3cschool的PHP教程</a>
+                      </li>
+                      <li class="list-group-item">
+                        <strong>资源网站：</strong>
+                        <a type="button" class="label label-primary" href="http://www.jq22.com/" target="_blank">jQuery插件大集合</a>
+                        <a type="button" class="label label-info" href="http://www.jq22.com/">http://www.jq22.com/</a>
+                        <a type="button" class="label label-info" href="http://www.w3school.com.cn/php/">w3cschool的PHP教程</a>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="http://www.baidu.com" class="btn-small btn-link">
+                          <span class="badge bg-primary">荐</span>
+                          PHP7.0正式发布，让我们看一看~
+                        </a>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="http://www.baidu.com" class="btn-small btn-link">
+                          <span class="badge bg-success">热</span>
+                          PHP7.0正式发布，让我们看一看~
+                        </a>
+                      </li>
+                      <li class="list-group-item">Porta ac consectetur ac</li>
+                      <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                  </div>
+                  <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">更多</a></p>
+                </div>
+            </div>
+            
+
             <div class="col-lg-4">
                 <h2>最后阅读</h2>
 
