@@ -11,11 +11,11 @@
     </span>
 
     <h3 class="timeline-header">
-        <?php echo Yii::t('backend', 'You have new user!') ?>
+        <?php echo Yii::t('backend', '有新的客户加入!') ?>
     </h3>
 
     <div class="timeline-body">
-        <?php echo Yii::t('backend', 'New user ({identity}) was registered at {created_at}', [
+        <?php echo Yii::t('backend', '新的用户 ({identity}) 注册于 {created_at}', [
             'identity' => $model->data['public_identity'],
             'created_at' => Yii::$app->formatter->asDatetime($model->data['created_at'])
         ]) ?>

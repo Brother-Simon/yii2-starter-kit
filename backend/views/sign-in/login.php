@@ -6,7 +6,7 @@ use yii\bootstrap\ActiveForm;
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \backend\models\LoginForm */
 
-$this->title = Yii::t('backend', 'Sign In');
+$this->title = Yii::t('backend', '登录');
 $this->params['breadcrumbs'][] = $this->title;
 $this->params['body-class'] = 'login-page';
 ?>
@@ -18,12 +18,12 @@ $this->params['body-class'] = 'login-page';
     <div class="login-box-body">
         <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
         <div class="body">
-            <?php echo $form->field($model, 'username') ?>
-            <?php echo $form->field($model, 'password')->passwordInput() ?>
-            <?php echo $form->field($model, 'rememberMe')->checkbox(['class'=>'simple']) ?>
+            <?php echo $form->field($model, 'username')->label('用户名') ?>
+            <?php echo $form->field($model, 'password')->passwordInput()->label('密码') ?>
+            <?php echo $form->field($model, 'rememberMe')->checkbox(['class'=>'simple'])->label('记住我') ?>
         </div>
         <div class="footer">
-            <?php echo Html::submitButton(Yii::t('backend', 'Sign me in'), [
+            <?php echo Html::submitButton(Yii::t('backend', '登录'), [
                 'class' => 'btn btn-primary btn-flat btn-block',
                 'name' => 'login-button'
             ]) ?>

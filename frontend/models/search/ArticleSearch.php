@@ -38,7 +38,6 @@ class ArticleSearch extends Article
     public function search($params)
     {
         $query = Article::find()->published();
-
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -54,7 +53,7 @@ class ArticleSearch extends Article
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title]);
-
+        
         return $dataProvider;
     }
 }

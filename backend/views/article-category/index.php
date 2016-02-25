@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\\models\search\ArticleCategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('backend', 'Article Categories');
+$this->title = Yii::t('backend', '文章目录');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="article-category-index">
@@ -15,9 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?php echo Html::a(Yii::t('backend', 'Create {modelClass}', [
-            'modelClass' => 'Article Category',
-        ]), ['create'], ['class' => 'btn btn-success']) ?>
+        <?php echo Html::a(Yii::t('backend', '创建文章目录'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php echo GridView::widget([
@@ -25,12 +23,24 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'id',
-            'slug',
-            'title',
-            'status',
-
+            [
+                'attribute'=>'slug',
+                'label'=>'标识',
+            ],
+            [
+                'attribute'=>'title',
+                'label'=>'标题',
+            ],
+            [
+                'class'=>\common\grid\EnumColumn::className(),
+                'attribute'=>'status',
+                'enum'=>[
+                    Yii::t('backend', '未启用'),
+                    Yii::t('backend', '已启用')
+                ],
+                'label'=>'状态'
+            ],
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template'=>'{update} {delete}'

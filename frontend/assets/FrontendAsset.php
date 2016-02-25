@@ -19,7 +19,8 @@ class FrontendAsset extends AssetBundle
     public $baseUrl = '@web';
 
     public $css = [
-        'css/style.css',
+        'css/ak757.css',
+        'css/ak747.css'
     ];
 
     public $js = [

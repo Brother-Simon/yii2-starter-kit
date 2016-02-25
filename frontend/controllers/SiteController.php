@@ -4,7 +4,10 @@ namespace frontend\controllers;
 use Yii;
 use frontend\models\ContactForm;
 use yii\web\Controller;
-
+use yii\data\ArrayDataProvider;
+use yii\db\Query;
+use yii\web\User;
+use frontend\models\Vip;
 /**
  * Site controller
  */
@@ -29,10 +32,26 @@ class SiteController extends Controller
             ]
         ];
     }
+    
+    public function beforeAction($action)
+    {
+        $this->layout = Yii::$app->user->isGuest || !Yii::$app->user->can('loginToBackend') ? 'base' : 'common';
+        return parent::beforeAction($action);
+    }
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $article = (new Query())->from('article')->all();
+//         var_dump(Yii::$app->user->getIdentity());die('mahuan');
+// $customers = Vip::find()
+//     ->where(['id'=>2])
+//     ->indexBy('id')
+//     ->asArray()
+//     ->all();
+//     var_dump($customers);die('fff');
+            return $this->render('index', [
+            'article' => $article
+        ]);
     }
 
     public function actionContact()

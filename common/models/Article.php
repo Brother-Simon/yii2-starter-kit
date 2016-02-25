@@ -120,6 +120,7 @@ class Article extends \yii\db\ActiveRecord
             [['author_id', 'updater_id', 'status'], 'integer'],
             [['slug', 'thumbnail_base_url', 'thumbnail_path'], 'string', 'max' => 1024],
             [['title'], 'string', 'max' => 512],
+            [['commission'], 'required'],
             [['view'], 'string', 'max' => 255],
             [['attachments', 'thumbnail'], 'safe']
         ];
