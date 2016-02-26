@@ -8,6 +8,8 @@ use yii\data\ArrayDataProvider;
 use yii\db\Query;
 use yii\web\User;
 use frontend\models\Vip;
+use common\models\Article;
+use yii\data\ActiveDataProvider;
 /**
  * Site controller
  */
@@ -42,15 +44,26 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $article = (new Query())->from('article')->all();
-//         var_dump(Yii::$app->user->getIdentity());die('mahuan');
-// $customers = Vip::find()
-//     ->where(['id'=>2])
-//     ->indexBy('id')
-//     ->asArray()
-//     ->all();
-//     var_dump($customers);die('fff');
+        $query = Article::find();
+
+        $provide = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageSize' => 1,
+            ],
+            'sort' => [
+                'defaultOrder' => [
+                    'created_at' => SORT_DESC,
+                    'title' => 'simon'
+                ]
+            ]
+        ]);
+        $provide->prepare();
+        $pagination = $provide->getPagination();
             return $this->render('index', [
-            'article' => $article
+            'article' => $provide->getModels(),
+            'pageCount' => $pagination->pageCount,
+            'links' => $pagination->getLinks()
         ]);
     }
 

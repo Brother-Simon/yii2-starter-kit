@@ -56,7 +56,7 @@ $this->title = 'web开发者的该驻足的地方！';
 <!-- news list end --> 
 <!-- pages start -->
 <div class="m-pages"> 
-<a class="m-pages-pre" href="/">上一页</a>
+<a class="m-pages-pre" href="<?=">上一页</a>
   <div class="m-pages-num">
     <div class="m-pages-num-con">2/155</div>
     <div class="m-pages-num-arrow"></div>
