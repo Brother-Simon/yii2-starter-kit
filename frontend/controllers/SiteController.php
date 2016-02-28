@@ -34,7 +34,7 @@ class SiteController extends Controller
             ]
         ];
     }
-    
+
     public function beforeAction($action)
     {
         $this->layout = Yii::$app->user->isGuest || !Yii::$app->user->can('loginToBackend') ? 'base' : 'common';
@@ -63,6 +63,7 @@ class SiteController extends Controller
             return $this->render('index', [
             'article' => $provide->getModels(),
             'pageCount' => $pagination->pageCount,
+            'page' => $pagination->page,
             'links' => $pagination->getLinks()
         ]);
     }

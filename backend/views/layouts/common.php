@@ -20,7 +20,7 @@ $bundle = BackendAsset::register($this);
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
 <!--                 <?php echo Yii::$app->name ?>
  -->
-            光磊科技管理后台
+          	马欢管理后台
              </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
@@ -52,7 +52,7 @@ $bundle = BackendAsset::register($this);
                             <ul class="dropdown-menu">
                                 <li class="header"><?php echo Yii::t('backend', 'You have {num} log items', ['num'=>\backend\models\SystemLog::find()->count()]) ?></li>
                                 <li>
-                                    
+
                                     <ul class="menu">
                                         <?php foreach(\backend\models\SystemLog::find()->orderBy(['log_time'=>SORT_DESC])->limit(5)->all() as $logEntry): ?>
                                             <li>
@@ -120,7 +120,7 @@ $bundle = BackendAsset::register($this);
                         <a href="<?php echo Url::to(['/sign-in/profile']) ?>">
                             <i class="fa fa-circle text-success"></i>
                            <!--  <?php echo Yii::$app->formatter->asDatetime(time()) ?> -->
-                           光磊科技
+                           马欢
                         </a>
                     </div>
                 </div>
@@ -132,43 +132,340 @@ $bundle = BackendAsset::register($this);
                     'activateParents'=>true,
                     'items'=>[
                         [
-                            'label'=>Yii::t('backend', '功能管理'),
+                            'label'=>Yii::t('backend', '项目管理'),
                             'options' => ['class' => 'header']
                         ],
                         [
-                            'label'=>Yii::t('backend', '事件'),
-                            'icon'=>'<i class="fa fa-bar-chart-o"></i>',
-                            'url'=>['/timeline-event/index'],
-                            'badge'=> TimelineEvent::find()->today()->count(),
-                            'badgeBgClass'=>'label-success',
-                        ],
-                        [
-                            'label'=>Yii::t('backend', '文章管理'),
+                            'label'=>Yii::t('backend', '仪器项目管理'),
                             'url' => '#',
                             'icon'=>'<i class="fa fa-edit"></i>',
                             'options'=>['class'=>'treeview'],
                             'items'=>[
-                                // ['label'=>Yii::t('backend', '静态页面'), 'url'=>['/page/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
-                                ['label'=>Yii::t('backend', '文章管理'), 'url'=>['/article/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
-                                ['label'=>Yii::t('backend', '文章目录'), 'url'=>['/article-category/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
-
-                                // ['label'=>Yii::t('backend', 'Text Widgets'), 'url'=>['/widget-text/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
-                                // ['label'=>Yii::t('backend', 'Menu Widgets'), 'url'=>['/widget-menu/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
-                                // ['label'=>Yii::t('backend', 'Carousel Widgets'), 'url'=>['/widget-carousel/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                [
+                                'label'=>Yii::t('backend', '仪器名称'),
+                                'url' => '#',
+                                'icon'=>'<i class="fa fa-edit"></i>',
+                                'options'=>['class'=>'treeview'],
+                                'items'=>[
+                                    ['label'=>Yii::t('backend', '仪器列表'), 'url'=>['/article/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                    ['label'=>Yii::t('backend', '添加仪器'), 'url'=>['/article-category/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                ]
+                                ],
+                                [
+                                'label'=>Yii::t('backend', '分布店面'),
+                                'url' => '#',
+                                'icon'=>'<i class="fa fa-edit"></i>',
+                                'options'=>['class'=>'treeview'],
+                                'items'=>[
+                                    ['label'=>Yii::t('backend', '地图定位'), 'url'=>['/article/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                ]
+                                ],
+                                [
+                                'label'=>Yii::t('backend', '使用频率'),
+                                'url' => '#',
+                                'icon'=>'<i class="fa fa-edit"></i>',
+                                'options'=>['class'=>'treeview'],
+                                'items'=>[
+                                    ['label'=>Yii::t('backend', '每季度操作时间'), 'url'=>['/article/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                    ['label'=>Yii::t('backend', '每月操作时间'), 'url'=>['/article/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                    ['label'=>Yii::t('backend', '每日操作时间'), 'url'=>['/article/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                    ['label'=>Yii::t('backend', '每年操作时间'), 'url'=>['/article/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                ]
+                                ],
+                                [
+                                'label'=>Yii::t('backend', '库存'),
+                                'url' => '#',
+                                'icon'=>'<i class="fa fa-edit"></i>',
+                                'options'=>['class'=>'treeview'],
+                                'items'=>[
+                                    ['label'=>Yii::t('backend', '仪器数量'), 'url'=>['/article/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                    ['label'=>Yii::t('backend', '库存预警'), 'url'=>['/article/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                ]
+                                ],
+                                [
+                                'label'=>Yii::t('backend', '成本'),
+                                'url' => '#',
+                                'icon'=>'<i class="fa fa-edit"></i>',
+                                'options'=>['class'=>'treeview'],
+                                'items'=>[
+                                    ['label'=>Yii::t('backend', '仪器选购成本'), 'url'=>['/article/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                ]
+                                ],
+                                [
+                                'label'=>Yii::t('backend', '出货量'),
+                                'url' => '#',
+                                'icon'=>'<i class="fa fa-edit"></i>',
+                                'options'=>['class'=>'treeview'],
+                                'items'=>[
+                                    ['label'=>Yii::t('backend', '每日购买量'), 'url'=>['/article/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                    ['label'=>Yii::t('backend', '每月购买量'), 'url'=>['/article/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                    ['label'=>Yii::t('backend', '每季度购买量'), 'url'=>['/article/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                    ['label'=>Yii::t('backend', '每年购买量'), 'url'=>['/article/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                ]
+                                ]
                             ]
                         ],
                         [
-                            'label'=>Yii::t('backend', '新手学堂'),
+                        'label'=>Yii::t('backend', '护理项目管理'),
+                        'url' => '#',
+                        'icon'=>'<i class="fa fa-edit"></i>',
+                        'options'=>['class'=>'treeview'],
+                        'items'=>[
+                            [
+                                'label'=>Yii::t('backend', '顾客使用情况'),
+                                'url'=>['/article/index'],
+                                'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                            ],
+                            [
+                            'label'=>Yii::t('backend', '预约系统'),
+                            'url'=>['/article/index'],
+                            'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                            ],
+                        ]
+                        ],
+                        [
+                            'label'=>Yii::t('backend', '养生项目管理'),
                             'icon'=>'<i class="fa fa-users"></i>',
                             'url'=>['/learn/index'],
                             'visible'=>Yii::$app->user->can('administrator')
                         ],
                         [
-                            'label'=>Yii::t('backend', '佣金管理'),
-                            'icon'=>'<i class="fa fa-money"></i>',
-                            'url'=>['/user-commission/index'],
-                            'visible'=>Yii::$app->user->can('administrator')
+                            'label'=>Yii::t('backend', '产品管理'),
+                            'url' => '#',
+                            'icon'=>'<i class="fa fa-edit"></i>',
+                            'options'=>['class'=>'treeview'],
+                            'items'=>[
+                                [
+                                    'label'=>Yii::t('backend', '产品发布'),
+                                    'url'=>['/produce/publish'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                                [
+                                    'label'=>Yii::t('backend', '产品列表'),
+                                    'url'=>['/produce/list'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                                [
+                                'label'=>Yii::t('backend', '产品审核'),
+                                'url'=>['/produce/care'],
+                                'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                            ]
                         ],
+                        [
+                            'label'=>Yii::t('backend', '订单管理'),
+                            'url' => '#',
+                            'icon'=>'<i class="fa fa-edit"></i>',
+                            'options'=>['class'=>'treeview'],
+                            'items'=>[
+                                [
+                                    'label'=>Yii::t('backend', '销售列表'),
+                                    'url'=>['/order/sale_list'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                                [
+                                    'label'=>Yii::t('backend', '订单详情'),
+                                    'url'=>['/order/sale_detail'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                            ]
+                        ],
+                        //顾客管理
+
+                        [
+                        'label'=>Yii::t('backend', '顾客管理'),
+                        'options' => ['class' => 'header']
+                        ],
+                        [
+                            'label'=>Yii::t('backend', '顾客分级系统'),
+                            'url' => '#',
+                            'icon'=>'<i class="fa fa-edit"></i>',
+                            'options'=>['class'=>'treeview'],
+                            'items'=>[
+                                [
+                                    'label'=>Yii::t('backend', '顾客级别设置'),
+                                    'url' => '#',
+                                    'icon'=>'<i class="fa fa-edit"></i>',
+                                    'options'=>['class'=>'treeview'],
+                                    'items'=>[
+                                        ['label'=>Yii::t('backend', '设置消费级别'), 'url'=>['/customer/set_level'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                        ['label'=>Yii::t('backend', '自动升级'), 'url'=>['/customer/auto_update'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                        ['label'=>Yii::t('backend', '不同级别折扣'), 'url'=>['/customer/level_sale'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                    ]
+                                ],
+                            ]
+                        ],
+                        [
+                        'label'=>Yii::t('backend', '营销管理系统'),
+                        'url' => '#',
+                        'icon'=>'<i class="fa fa-edit"></i>',
+                        'options'=>['class'=>'treeview'],
+                        'items'=>[
+                            [
+                                'label'=>Yii::t('backend', '营销活动'),
+                                'url' => '#',
+                                'icon'=>'<i class="fa fa-edit"></i>',
+                                'options'=>['class'=>'treeview'],
+                                'items'=>[
+                                    ['label'=>Yii::t('backend', '首次免单'), 'url'=>['/sale/first_free'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                    ['label'=>Yii::t('backend', '节日折扣'), 'url'=>['/sale/holiday_sale'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                    ['label'=>Yii::t('backend', '赠品活动'), 'url'=>['/sale/free_gift'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
+                                ]
+                            ],
+                        ]
+                        ],
+
+                        //横向管理
+                        [
+                        'label'=>Yii::t('backend', '横向管理'),
+                        'options' => ['class' => 'header']
+                        ],
+
+                        [
+                            'label'=>Yii::t('backend', '店铺OA'),
+                            'url' => '#',
+                            'icon'=>'<i class="fa fa-edit"></i>',
+                            'options'=>['class'=>'treeview'],
+                            'items'=>[
+                                [
+                                    'label'=>Yii::t('backend', '员工考勤'),
+                                    'url'=>['/shop/daliy'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                                [
+                                    'label'=>Yii::t('backend', '绩效考核'),
+                                    'url'=>['/shop/mechine'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                                [
+                                    'label'=>Yii::t('backend', '员工信息'),
+                                    'url'=>['/shop/yuangong'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                            ]
+                        ],
+                        [
+                            'label'=>Yii::t('backend', '店铺介绍'),
+                            'url' => '#',
+                            'icon'=>'<i class="fa fa-edit"></i>',
+                            'options'=>['class'=>'treeview'],
+                            'items'=>[
+                                [
+                                    'label'=>Yii::t('backend', '环境介绍'),
+                                    'url'=>['/shop_set/enviroment'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                                [
+                                    'label'=>Yii::t('backend', '一键拨号'),
+                                    'url'=>['/shop_set/phone'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                                [
+                                    'label'=>Yii::t('backend', '地址信息'),
+                                    'url'=>['/shop_set/addr'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                                [
+                                'label'=>Yii::t('backend', '环境介绍'),
+                                'url'=>['/shop_set/enviroment'],
+                                'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                                [
+                                    'label'=>Yii::t('backend', '一键拨号'),
+                                    'url'=>['/shop_set/phone'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                                [
+                                    'label'=>Yii::t('backend', '地址信息'),
+                                    'url'=>['/shop_set/addr'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                                [
+                                'label'=>Yii::t('backend', '店铺展示'),
+                                'url'=>['/shop_set/show'],
+                                'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                                [
+                                    'label'=>Yii::t('backend', '联系方式'),
+                                    'url'=>['/shop_set/cantact'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                                [
+                                    'label'=>Yii::t('backend', '公司展示'),
+                                    'url'=>['/shop_set/show_company'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                            ]
+                        ],
+                        //纵向管理
+                        [
+                        'label'=>Yii::t('backend', '纵向管理'),
+                        'options' => ['class' => 'header']
+                        ],
+
+                        [
+                            'label'=>Yii::t('backend', '信息推送'),
+                            'url' => '#',
+                            'icon'=>'<i class="fa fa-edit"></i>',
+                            'options'=>['class'=>'treeview'],
+                            'items'=>[
+                                [
+                                    'label'=>Yii::t('backend', '产品通知'),
+                                    'url'=>['/message/produce'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                                [
+                                    'label'=>Yii::t('backend', '会议通知'),
+                                    'url'=>['/message/meeting'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                                [
+                                    'label'=>Yii::t('backend', '培训通知'),
+                                    'url'=>['/message/study'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                                [
+                                    'label'=>Yii::t('backend', '系统通知'),
+                                    'url'=>['/message/system'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                                [
+                                    'label'=>Yii::t('backend', '活动通知'),
+                                    'url'=>['/message/activity'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                            ]
+                        ],
+                        [
+                            'label'=>Yii::t('backend', '权限管理'),
+                            'url' => '#',
+                            'icon'=>'<i class="fa fa-edit"></i>',
+                            'options'=>['class'=>'treeview'],
+                            'items'=>[
+                                [
+                                    'label'=>Yii::t('backend', '设备管理'),
+                                    'url'=>['/manage/manchine'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                                [
+                                    'label'=>Yii::t('backend', '操作员管理'),
+                                    'url'=>['/manage/sys'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                                [
+                                    'label'=>Yii::t('backend', '用户管理'),
+                                    'url'=>['/manage/customer'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+                                [
+                                    'label'=>Yii::t('backend', '数据管理'),
+                                    'url'=>['/manage/data'],
+                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
+                                ],
+
+                            ]
+                        ],
+
                         [
                             'label'=>Yii::t('backend', '系统管理'),
                             'options' => ['class' => 'header']
@@ -179,7 +476,7 @@ $bundle = BackendAsset::register($this);
                             'url'=>['/user/index'],
                             'visible'=>Yii::$app->user->can('administrator')
                         ],
-                        
+
                         [
                             'label'=>Yii::t('backend', '其他设置'),
                             'url' => '#',

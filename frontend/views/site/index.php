@@ -10,9 +10,9 @@ $this->title = 'web开发者的该驻足的地方！';
 
 <div class="uc-index">
 <!--内容 Begin-->
-<div class="user-center"> 
+<div class="user-center">
 <img src="/frontend/web/img/bj1.jpg" class="bg" alt="" />
-  
+
 
   <div class="content">
     <div class="face-box">
@@ -37,7 +37,7 @@ $this->title = 'web开发者的该驻足的地方！';
         <em>总收入佣金</em> </a></li>
     </ul>
   </div>
-  <!--用户信息 End--> 
+  <!--用户信息 End-->
 </div>
 
 </div>
@@ -53,25 +53,28 @@ $this->title = 'web开发者的该驻足的地方！';
    <?php endforeach; ?>
   </ul>
 </div>
-<!-- news list end --> 
 <!-- pages start -->
-<div class="m-pages"> 
-<a class="m-pages-pre" href="<?=">上一页</a>
+<div class="m-pages">
+<?php if(isset($links['prev'])):?>
+<a class="m-pages-pre" href="<?php echo $links['prev'];?>">上一页</a>
+<?php endif;?>
   <div class="m-pages-num">
-    <div class="m-pages-num-con">2/155</div>
+    <div class="m-pages-num-con"><?php echo $page+1?>/<?php echo $pageCount?></div>
     <div class="m-pages-num-arrow"></div>
   </div>
-  <select  onchange="SearchPage(this.value)" >
-    <option  value="1">1</option>
-    <option selected="selected" value="2">2</option>
-    <option  value="3">3</option>
-    <option  value="4">4</option>
-    <option  value="5">5</option>
-    <option  value="6">6</option>
-    <option  value="7">7</option>
+<!--   <select  onchange="SearchPage(this.value)" > -->
+<!--     <option  value="1">1</option> -->
+<!--     <option selected="selected" value="2">2</option> -->
+<!--     <option  value="3">3</option> -->
+<!--     <option  value="4">4</option> -->
+<!--     <option  value="5">5</option> -->
+<!--     <option  value="6">6</option> -->
+<!--     <option  value="7">7</option> -->
 
-  </select>
-  <a  class="m-pages-next" href="/3/">下一页</a> 
+<!--   </select> -->
+<?php if(isset($links['next'])):?>
+  <a  class="m-pages-next" href="<?php echo $links['next'];?>">下一页</a>
+  <?php endif;?>
   </div>
 <!--内容 End-->
 <div class="wrap"> <a href="#" class="btn-one btn-gray">退出登录</a> </div>

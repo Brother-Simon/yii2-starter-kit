@@ -7,7 +7,9 @@ use common\models\ArticleAttachment;
 use frontend\models\search\ArticleSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-
+use frontend\models\ArticleIp;
+use frontent\models\MyClick;
+use frontend\models\Vip;
 /**
  * @author Eugene Terentev <eugene@terentev.net>
  */
@@ -31,14 +33,45 @@ class ArticleController extends Controller
      * @return string
      * @throws NotFoundHttpException
      */
-    public function actionView($slug)
+    public function actionView($id,$user_id)
     {
-        $model = Article::find()->published()->andWhere(['slug'=>$slug])->one();
+
+         $vip = Vip::findOne(['id'=>2]);
+         $vip->updateCounters(['total_commison'=>-10]);
+die('fff');
+
+            $model = Article::find()->published()->andWhere(['id'=>$id])->one();
         if (!$model) {
             throw new NotFoundHttpException;
         }
+        $article_ip = new ArticleIp();
+        $ip = \Yii::$app->request->userIP;
+        $article_ip->ip = $ip;
+        $article_ip->article_id = $id;
+        //如果为空则统计绩效
+        if(empty($article_ip->findOne(['ip'=>$ip,'article_id'=>$id]))){
+            //保存ip
+            $article_ip->save();
+            //记录我的点击
+            $my_click = new MyClick();
+            $my_click->user_id = "UID";
+            $my_click->article_id = $id;
+            $my_click->save();
 
+            //计算绩效
+            $vip = Vip::findOne(['id'=>2]);
+            $vip->updateCounters(['total_commison'=>-$model['total_commison']]);
+
+        }else{
+            return false;
+        }
+        //我的点击统计
+
+        $article->save();
+        var_dump($article->errors);
         $viewFile = $model->view ?: 'view';
+        echo \Yii::$app->request->userIP;
+
         return $this->render($viewFile, ['model'=>$model]);
     }
 
