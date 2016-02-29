@@ -20,7 +20,7 @@ use yii\widgets\ActiveForm;
 
 class SignInController extends \yii\web\Controller
 {
-
+    public $layout = false;
     public function actions()
     {
         return [
@@ -57,12 +57,12 @@ class SignInController extends \yii\web\Controller
                     ]
                 ]
             ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post']
-                ]
-            ]
+//             'verbs' => [
+//                 'class' => VerbFilter::className(),
+//                 'actions' => [
+//                     'logout' => ['post']
+//                 ]
+//             ]
         ];
     }
 
