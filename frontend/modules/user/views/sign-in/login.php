@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $form yii\widgets\ActiveForm */
 /* @var $model \frontend\modules\user\models\LoginForm */
@@ -799,7 +799,7 @@ header .btn-return {
   position: relative;
   z-index: 1;
   color: #b7b7b7;
-  outline:none; 
+  outline:none;
 }
 .fzcl_a{width:20%; float:right;}
 
@@ -817,7 +817,7 @@ header .btn-return {
 .fzcl_b_r{float:left;width:59%; text-align:center;border:1px solid; border-color:rgba(183,183,183,0.8)}
 .mtop{margin-top:-1px;}
 
-
+#btn_Login{width:96%;border:0 none;margin:25px auto}
 .mbt-page{padding-bottom:130px;}
 
 </style>
@@ -835,38 +835,37 @@ header .btn-return {
                 'tag'=> false
             ]
         ]
-        
+
     ]); ?>
     <div class="m-login-ttlogo">
       <div class="yiche-logo"> </div>
       <p> 一个帐号，一部手机！ <em>动动手指，趟在家里就能赚钱</em> </p>
     </div>
     <div class="menu">
-     
+
     </div>
     <div class="input-box">
       <div class="input-item"> <i class="yonghu"></i>
       <?= Html::activeTextInput( $model, 'identity', ['class'=>'three-character','placeholder'=>'手机/邮箱/用户名'] )?>
        </div>
-      <div class="input-item"> 
+      <div class="input-item">
       <i class="mima"></i>
-      <?= Html::activeTextInput( $model, 'password', ['class'=>'three-character','type'=>'password','placeholder'=>'请输入您的密码'] )?>        
+      <?= Html::activeTextInput( $model, 'password', ['class'=>'three-character','type'=>'password','placeholder'=>'请输入您的密码'] )?>
         </div>
-     
+
     </div>
-    
+
     <div id="divMsg" class="input-alert-bottom"> </div>
     <?php echo Html::submitButton(Yii::t('frontend', '登录'), ['class' => 'btn-blue', 'id'=>'btn_Login', 'name' => 'login-button']) ?>
-    <input type="submit" id="btn_Login" href="首页.htm" class="btn-blue">
     <div class="bottom-info">
 <!--         <a target="_top" href="#" class="fl">忘记密码？</a> -->
         <a target="_top" href="注册.htm" class="fr">新用户注册</a>
     </div>
-  
+
   <?php ActiveForm::end(); ?>
   <?php if($model->hasErrors()):?>
 <script>
-alert(<?php echo array_values($model->getFirstErrors())[0]?>);
+alert('<?php echo array_values($model->getFirstErrors())[0]?>');
 </script>
 <?php endif;?>
 </div>

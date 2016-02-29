@@ -68,6 +68,10 @@ class SignInController extends \yii\web\Controller
 
     public function actionLogin()
     {
+        Yii::$app->session->setFlash('alert', [
+            'options' => ['class'=>'alert-success'],
+            'body' => Yii::t('frontend', 'Your account has been successfully saved')
+        ]);
         $model = new LoginForm();
         if (Yii::$app->request->isAjax) {
             $model->load($_POST);
@@ -91,6 +95,7 @@ class SignInController extends \yii\web\Controller
 
     public function actionSignup()
     {
+
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             $user = $model->signup();

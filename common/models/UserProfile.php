@@ -27,7 +27,7 @@ class UserProfile extends \yii\db\ActiveRecord
     const GENDER_FEMALE = 2;
 
     public $picture;
-
+    public $phone;
     public function behaviors()
     {
         return [

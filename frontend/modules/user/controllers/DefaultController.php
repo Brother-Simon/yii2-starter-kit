@@ -67,6 +67,30 @@ class DefaultController extends Controller
                 'profile' => Yii::$app->user->identity->userProfile
             ]
         ]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('alert', [
+                'options' => ['class'=>'alert-success'],
+                'body' => Yii::t('frontend', 'Your account has been successfully saved')
+            ]);
+            return $this->refresh();
+        }
+        return $this->render('index', ['model'=>$model]);
+    }
+
+    /**
+     * @return string|\yii\web\Response
+     */
+    public function actionChangeProfile()
+    {
+        $accountModel = new AccountForm();
+        $accountModel->setUser(Yii::$app->user->identity);
+
+        $model = new MultiModel([
+            'models' => [
+                'account' => $accountModel,
+                'profile' => Yii::$app->user->identity->userProfile
+            ]
+        ]);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('alert', [
