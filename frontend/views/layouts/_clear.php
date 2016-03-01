@@ -20,6 +20,7 @@ use yii\helpers\Html;
     <?php echo Html::csrfMetaTags() ?>
 </head>
 <body>
+
 <?php $this->beginBody() ?>
     <?php echo $content ?>
 <?php $this->endBody() ?>

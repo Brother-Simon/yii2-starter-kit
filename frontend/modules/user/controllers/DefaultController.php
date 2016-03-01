@@ -67,13 +67,7 @@ class DefaultController extends Controller
                 'profile' => Yii::$app->user->identity->userProfile
             ]
         ]);
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('alert', [
-                'options' => ['class'=>'alert-success'],
-                'body' => Yii::t('frontend', 'Your account has been successfully saved')
-            ]);
-            return $this->refresh();
-        }
+        
         return $this->render('index', ['model'=>$model]);
     }
 
@@ -99,6 +93,25 @@ class DefaultController extends Controller
             ]);
             return $this->refresh();
         }
-        return $this->render('index', ['model'=>$model]);
+        return $this->render('change', ['model'=>$model]);
+    }
+    
+    /**
+     * Updates an existing User model.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionCreate()
+    {
+        $model = new UserForm();
+        $model->setScenario('create');
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index']);
+        }
+
+        return $this->render('create', [
+            'model' => $model,
+            'roles' => ArrayHelper::map(Yii::$app->authManager->getRoles(), 'name', 'name')
+        ]);
     }
 }
