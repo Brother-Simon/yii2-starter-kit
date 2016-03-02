@@ -20,7 +20,8 @@ $this->title = 'My Clicks';
    <div class="zf_time">点击时间</div><div class="zf_new">文章标题</div><div class="zf_monery">获得佣金</div></div>
     <ul>
     <?php foreach($data as $key=>$value):?>
-     <li ><div class="zf_time"><?php echo Yii::$app->formatter->asDate($value['published_at'], 'yyyy-MM-dd')?></div><div class="zf_tit"><a href="#"><?php echo $value['title']?></a></div><div class="zf_monery red">0.05</div></li>
+     <li ><div class="zf_time"><?php echo Yii::$app->formatter->asDate($value['published_at'], 'yyyy-MM-dd')?></div><div class="zf_tit">
+     <a href="<?= \yii\helpers\Url::toRoute('/article/'.$value['id'].'-1') ?>"><?php echo $value['title']?></a></div><div class="zf_monery red"><?php echo $value['commission']?></div></li>
     <?php endforeach;?> 
     </ul>
   </div>
@@ -36,13 +37,6 @@ $this->title = 'My Clicks';
       <div class="m-pages-num-arrow"></div>
     </div>
     <select  onchange="SearchPage(this.value)" >
-      <option  value="1">1</option>
-      <option selected="selected" value="2">2</option>
-      <option  value="3">3</option>
-      <option  value="4">4</option>
-      <option  value="5">5</option>
-      <option  value="6">6</option>
-      <option  value="7">7</option>
     </select>
     <?php if(isset($links['next'])):?>
   		<a  class="m-pages-next" href="<?php echo $links['next'];?>">下一页</a>

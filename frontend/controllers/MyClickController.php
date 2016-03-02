@@ -44,12 +44,12 @@ class MyClickController extends Controller
      */
     public function actionIndex()
     {
-        $click_query = MyClick::findOne(['user_id'=>1])->select(['article_id']);
-        $article_query = Article::find()->where($click_query);
+        $click_query = MyClick::find()->where(['user_id'=>1])->select(['article_id']);
+        $article_query = Article::find()->where(['id'=>$click_query]);
         $provide = new ActiveDataProvider([
             'query' => $article_query,
             'pagination' => [
-                'pageSize' => 1,
+                'pageSize' => 3,
             ],
             'sort' => [
                 'defaultOrder' => [

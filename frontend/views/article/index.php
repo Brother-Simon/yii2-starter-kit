@@ -1,30 +1,19 @@
 <?php
+use yii\helpers\Html;
 /* @var $this yii\web\View */
 $this->title = Yii::t('frontend', 'Articles')
 ?>
-<header> <a class="btn-return" href="javascript:;"></a> asdasd </header>
+<header> <a class="btn-return" href="javascript:history.back();"></a><?php echo $model->title;?> </header>
 
 <!-- 正文 start -->
 <div class="m-detail-top">
-  <h1> 新闻标题</h1>
-  <p class="m-post-author"> 2016-01-13 &nbsp;&nbsp;&nbsp;测试&nbsp;&nbsp;&nbsp;</p>
+  <h1> <?php echo $model->title;?></h1>
+  <p class="m-post-author"> <?php echo Yii::$app->formatter->asDate($model->published_at, 'yyyy-MM-dd');?> &nbsp;&nbsp;&nbsp;平台&nbsp;&nbsp;&nbsp;</p>
   <p class="m-post-com-num" id="commentCont"> <a href="#comment"></a> </p>
 </div>
 <article>
   <div class="m-detail-con"  >
-    <p>文章内容文章内容文章内容文章内容文章内容文章内容<br/>
-      内容文章内容文章内容<br/>
-      内容文章内容文章内容<br/>
-      内容文章内容文章内容<br/>
-      内容文章内容文章内容<br/>
-      内容文章内容文章内容<br/>
-      内容文章内容文章内容<br/>
-      内容文章内容文章内容<br/>
-      内容文章内容文章内容<br/>
-      内容文章内容文章内容<br/>
-      内容文章内容文章内容<br/>
-      内容文章内容文章内容<br/>
-    </p>
+  <?php echo Html::tag('p', Html::encode($model->body))?>
   </div>
 </article>
 <!-- 正文 end --> 

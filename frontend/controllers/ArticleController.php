@@ -39,7 +39,7 @@ class ArticleController extends Controller
          $vip = Vip::findOne(['id'=>2]);
          $vip->updateCounters(['total_commison'=>-10]);
 
-            $model = Article::find()->published()->andWhere(['id'=>$id])->one();
+         $model = Article::find()->published()->andWhere(['id'=>$id])->one();
 //         if (!$model) {
 //             throw new NotFoundHttpException;
 //         }
@@ -65,7 +65,6 @@ class ArticleController extends Controller
         //我的点击统计
 
         $viewFile = $model->view ?: 'view';
-
         return $this->render('index', ['model'=>$model]);
     }
 
