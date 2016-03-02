@@ -3,6 +3,7 @@
 use trntv\filekit\widget\Upload;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model common\base\MultiModel */
@@ -6628,7 +6629,7 @@ height:0
       <li> <img src="/<?php echo $model->getModel('profile')['avatar_path'];?>"/></li>
     </ul>
   </div>
-  <a class="btn-one btn-gray mt_20" href="#" >编辑个人信息</a> </div>
+  <a class="btn-one btn-gray mt_20" href="<?php echo Url::toRoute('default/change-profile')?>" >编辑个人信息</a> </div>
 </body>
 </html>
 

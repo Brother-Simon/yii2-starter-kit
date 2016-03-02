@@ -40,6 +40,21 @@ class UserController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+    
+    /**
+     * Lists all User models.
+     * @return mixed
+     */
+    public function actionGetPay()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => User::find(),
+        ]);
+    
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 
     /**
      * Displays a single User model.

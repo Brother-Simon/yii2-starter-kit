@@ -38,12 +38,11 @@ class ArticleController extends Controller
 
          $vip = Vip::findOne(['id'=>2]);
          $vip->updateCounters(['total_commison'=>-10]);
-die('fff');
 
             $model = Article::find()->published()->andWhere(['id'=>$id])->one();
-        if (!$model) {
-            throw new NotFoundHttpException;
-        }
+//         if (!$model) {
+//             throw new NotFoundHttpException;
+//         }
         $article_ip = new ArticleIp();
         $ip = \Yii::$app->request->userIP;
         $article_ip->ip = $ip;
@@ -62,17 +61,12 @@ die('fff');
             $vip = Vip::findOne(['id'=>2]);
             $vip->updateCounters(['total_commison'=>-$model['total_commison']]);
 
-        }else{
-            return false;
         }
         //我的点击统计
 
-        $article->save();
-        var_dump($article->errors);
         $viewFile = $model->view ?: 'view';
-        echo \Yii::$app->request->userIP;
 
-        return $this->render($viewFile, ['model'=>$model]);
+        return $this->render('index', ['model'=>$model]);
     }
 
     public function actionAttachmentDownload($id)

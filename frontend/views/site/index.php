@@ -44,7 +44,7 @@ $this->title = 'web开发者的该驻足的地方！';
 <div class="card-news card-news-list">
   <ul>
    <?php foreach ($article as $item): ?>
-    <li><a href="<?= \yii\helpers\Url::toRoute('/article') ?>">
+    <li><a href="<?= \yii\helpers\Url::toRoute('/article/'.$item['id'].'-1') ?>">
       <div class="img-box"><img src="/frontend/web/img/car.jpg"></div>
       <h4><?php echo $item['title']; ?></h4>
       <em>点击可赚取<?= Html::tag('span', Html::encode($item['commission']), ['class' => 'red']) ?></em>

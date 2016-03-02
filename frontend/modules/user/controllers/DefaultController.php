@@ -13,6 +13,7 @@ use yii\web\Controller;
 
 class DefaultController extends Controller
 {
+    public $layout = false;
     /**
      * @return array
      */
@@ -40,7 +41,7 @@ class DefaultController extends Controller
      */
     public function behaviors()
     {
-        return [
+        return [ 
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [

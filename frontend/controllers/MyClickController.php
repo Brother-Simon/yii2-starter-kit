@@ -9,7 +9,10 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\VarDumper;
-
+use yii\db\Expression;
+use yii\behaviors\TimestampBehavior;
+use yii\data\ActiveDataProvider;
+use common\models\Article;
 // 使用
 
 /**
@@ -26,6 +29,12 @@ class MyClickController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'published_at',
+                'updatedAtAttribute' => 'update_time',
+                'value' => new Expression('NOW()')
+            ],
         ];
     }
 
@@ -35,16 +44,27 @@ class MyClickController extends Controller
      */
     public function actionIndex()
     {
-        // $searchModel = new MyClickSearch();
-        // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $click = new MyClick();
-        $click_data = $click::findOne(1);
-        $var = $click_data->article;
-        VarDumper::dump($var);die('fff');
-
+        $click_query = MyClick::findOne(['user_id'=>1])->select(['article_id']);
+        $article_query = Article::find()->where($click_query);
+        $provide = new ActiveDataProvider([
+            'query' => $article_query,
+            'pagination' => [
+                'pageSize' => 1,
+            ],
+            'sort' => [
+                'defaultOrder' => [
+                    'created_at' => SORT_DESC,
+                    'title' => 'simon'
+                ]
+            ]
+        ]);
+        $provide->prepare();
+        $pagination = $provide->getPagination();
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'data' => $provide->getModels(),
+            'pageCount' => $pagination->pageCount,
+            'page' => $pagination->page,
+            'links' => $pagination->getLinks()
         ]);
     }
 
