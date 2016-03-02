@@ -13,11 +13,8 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
 
-    <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+    <?php echo Html::input('text', 'commission', $model->commission, ['class' => 'fff']);?>
 
-    <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
 
     <div class="form-group">

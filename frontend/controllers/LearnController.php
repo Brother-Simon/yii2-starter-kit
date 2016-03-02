@@ -32,12 +32,8 @@ class LearnController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Learn::find(),
-        ]);
-
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'data' => Learn::findOne(1)
         ]);
     }
 

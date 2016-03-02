@@ -10,7 +10,7 @@ return [
         // Articles
         ['pattern'=>'article/index', 'route'=>'article/index'],
         ['pattern'=>'article/attachment-download', 'route'=>'article/attachment-download'],
-        ['pattern'=>'article/<user_id>-<id>', 'route'=>'article/view'],
+        ['pattern'=>'article/<id>-<user_id>', 'route'=>'article/view'],
 
         // Api
         ['class' => 'yii\rest\UrlRule', 'controller' => 'api/v1/article', 'only' => ['index', 'view', 'options']],

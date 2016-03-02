@@ -24,16 +24,16 @@ $this->title = 'web开发者的该驻足的地方！';
   <div class="user-center-bottom">
     <ul>
       <li><a class="remove-a" href="我的点击.htm">
-        <h5> 0</h5>
+        <h5> <?php echo \Yii::$app->user->identity->userProfile->today_commission;?></h5>
         <em>今日收入</em> </a></li>
-      <li><a class="remove-a" href="提取佣金.htm">
-        <h5> 0</h5>
-        <em>可提佣金</em> </a></li>
-      <li><a href="已提佣金.htm">
-        <h5> 0</h5>
-        <em>已提佣金</em> </a></li>
+<!--       <li><a class="remove-a" href="提取佣金.htm"> -->
+<!--         <h5> 0</h5> -->
+<!--         <em>可提佣金</em> </a></li> -->
+<!--       <li><a href="已提佣金.htm"> -->
+<!--         <h5> 0</h5> -->
+<!--         <em>已提佣金</em> </a></li> -->
         <li><a href="我的点击.htm">
-        <h5> 0</h5>
+        <h5> <?php echo \Yii::$app->user->identity->userProfile->total_commission;?></h5>
         <em>总收入佣金</em> </a></li>
     </ul>
   </div>

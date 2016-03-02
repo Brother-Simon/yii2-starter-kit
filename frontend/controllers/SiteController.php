@@ -49,7 +49,7 @@ class SiteController extends Controller
         $provide = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
-                'pageSize' => 1,
+                'pageSize' => 10,
             ],
             'sort' => [
                 'defaultOrder' => [
