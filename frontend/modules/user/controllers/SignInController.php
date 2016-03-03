@@ -95,17 +95,21 @@ class SignInController extends \yii\web\Controller
 
     public function actionSignup()
     {
-
         $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->get())) {
             $user = $model->signup();
             if ($user && Yii::$app->getUser()->login($user)) {
                 return $this->goHome();
+            }else{
+                return $this->render('signup', [
+                    'model' => $model,
+                    'user' => $user
+                ]);
             }
         }
 
         return $this->render('signup', [
-            'model' => $model
+            'model' => $model,
         ]);
     }
 

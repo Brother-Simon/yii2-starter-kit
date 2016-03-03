@@ -24,7 +24,7 @@ class SignupForm extends Model
             ['username', 'required'],
             ['username', 'unique',
                 'targetClass'=>'\common\models\User',
-                'message' => Yii::t('frontend', 'This username has already been taken.')
+                'message' => Yii::t('frontend', '这个用户名已经被使用了')
             ],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
@@ -33,7 +33,7 @@ class SignupForm extends Model
             ['email', 'email'],
             ['email', 'unique',
                 'targetClass'=> '\common\models\User',
-                'message' => Yii::t('frontend', 'This email address has already been taken.')
+                'message' => Yii::t('frontend', '这个邮箱已经被注册了。')
             ],
 
             ['password', 'required'],

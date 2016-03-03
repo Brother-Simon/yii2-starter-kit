@@ -43,6 +43,10 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        if(\Yii::$app->user->isGuest){
+            $this->redirect(['user/sign-in/login']);
+        }
+
         $article = (new Query())->from('article')->all();
         $query = Article::find();
 

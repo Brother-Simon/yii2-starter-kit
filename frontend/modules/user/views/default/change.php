@@ -7387,7 +7387,7 @@ header .btn-return {
     <div class="b-return"> <a id="gobackElm" href="javascript:history.back();" class="btn-return">返回</a> <span>帐号设置</span> </div>
     <div class="scroll-block">
       <ul>
-        <li><a href="#">基本信息</a></li>
+        <li><a href="<?= \yii\helpers\Url::toRoute('/user/default/index') ?>">基本信息</a></li>
         <li class="current"><a href="#">修改密码</a></li>
 
       </ul>

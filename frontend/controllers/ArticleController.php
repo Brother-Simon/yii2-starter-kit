@@ -37,7 +37,7 @@ class ArticleController extends Controller
     public function actionView($id,$user_id)
     {
 
-            $model = Article::find()->published()->andWhere(['id'=>$id])->one();
+         $model = Article::find()->published()->andWhere(['id'=>$id])->one();
          if(empty($model)){
              return false;
          }

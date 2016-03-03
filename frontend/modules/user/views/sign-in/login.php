@@ -859,7 +859,7 @@ header .btn-return {
     <?php echo Html::submitButton(Yii::t('frontend', '登录'), ['class' => 'btn-blue', 'id'=>'btn_Login', 'name' => 'login-button']) ?>
     <div class="bottom-info">
 <!--         <a target="_top" href="#" class="fl">忘记密码？</a> -->
-        <a target="_top" href="注册.htm" class="fr">新用户注册</a>
+        <a target="_top" href="<?= \yii\helpers\Url::toRoute('/user/sign-in/signup') ?>" class="fr">新用户注册</a>
     </div>
 
   <?php ActiveForm::end(); ?>

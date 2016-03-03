@@ -44,7 +44,7 @@ class MyClickController extends Controller
      */
     public function actionIndex()
     {
-        $click_query = MyClick::find()->where(['user_id'=>1])->select(['article_id']);
+        $click_query = MyClick::find()->where(['user_id'=>\Yii::$app->user->id])->select(['article_id']);
         $article_query = Article::find()->where(['id'=>$click_query]);
         $provide = new ActiveDataProvider([
             'query' => $article_query,

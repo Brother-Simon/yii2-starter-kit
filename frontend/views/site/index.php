@@ -44,7 +44,7 @@ $this->title = 'web开发者的该驻足的地方！';
 <div class="card-news card-news-list">
   <ul>
    <?php foreach ($article as $item): ?>
-    <li><a href="<?= \yii\helpers\Url::toRoute('/article/'.$item['id'].'-1') ?>">
+    <li><a href="<?= \yii\helpers\Url::toRoute('/article/'.$item['id'].'-'.\Yii::$app->user->id) ?>">
       <div class="img-box"><img src="/frontend/web/img/car.jpg"></div>
       <h4><?php echo $item['title']; ?></h4>
       <em>点击可赚取<?= Html::tag('span', Html::encode($item['commission']), ['class' => 'red']) ?></em>
@@ -77,5 +77,5 @@ $this->title = 'web开发者的该驻足的地方！';
   <?php endif;?>
   </div>
 <!--内容 End-->
-<div class="wrap"> <a href="#" class="btn-one btn-gray">退出登录</a> </div>
+<div class="wrap"> <a href="<?= \yii\helpers\Url::toRoute('/user/sign-in/logout') ?>" class="btn-one btn-gray">退出登录</a> </div>
 </div>
