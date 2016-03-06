@@ -1,16 +1,16 @@
 <?php
 
-namespace frontend\models\search;
+namespace backend\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use frontend\models\MyClick as MyClickModel;
+use backend\models\Ad;
 
 /**
- * MyClick represents the model behind the search form about `frontend\models\MyClick`.
+ * AdSearch represents the model behind the search form about `backend\models\Ad`.
  */
-class MyClick extends MyClickModel
+class AdSearch extends Ad
 {
     /**
      * @inheritdoc
@@ -18,7 +18,7 @@ class MyClick extends MyClickModel
     public function rules()
     {
         return [
-            [['id', 'user_id', 'article_id'], 'integer'],
+            [['id'], 'integer'],
         ];
     }
 
@@ -40,25 +40,21 @@ class MyClick extends MyClickModel
      */
     public function search($params)
     {
-        $query = MyClickModel::find();
+        $query = Ad::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
 
-        $this->load($params);
-
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
+        if (!($this->load($params) && $this->validate())) {
             return $dataProvider;
         }
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'user_id' => $this->user_id,
-            'article_id' => $this->article_id,
         ]);
+
+        $query->andFilterWhere(['like', 'title', $this->title]);
 
         return $dataProvider;
     }

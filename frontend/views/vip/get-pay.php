@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
            <div class="txyj"> 可提佣金：<?php echo $total_commission?></div>
          </div>
       	<div  class="input-item">
-      	<?= Html::errorSummary($model, ['class' => 'errors']) ?>
+      	<?= Html::errorSummary($model, ['class' => 'errors','header'=>'提现失败，注意：']) ?>
       	<?= Html::activeInput('text', $model, 'commission', ['placeholder' => '请输入提现金额']) ?>
         </div>
     </div>

@@ -14,7 +14,7 @@ $config = [
 ];
 
 // if (YII_DEBUG) {
-if (false) {
+if (true) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',

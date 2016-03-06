@@ -44,18 +44,13 @@ class MyClickController extends Controller
      */
     public function actionIndex()
     {
-        $click_query = MyClick::find()->where(['user_id'=>\Yii::$app->user->id])->select(['article_id']);
-        $article_query = Article::find()->where(['id'=>$click_query]);
+        $query = (new \yii\db\Query())->select('article.*')->from('my_click')->where(['user_id'=>\Yii::$app->user->id])->orderBy('my_click.id DESC');
+        $click_query = $query->limit(50)->join('LEFT JOIN', 'article', 'article.id = my_click.article_id');
+
         $provide = new ActiveDataProvider([
-            'query' => $article_query,
+            'query' => $click_query,
             'pagination' => [
                 'pageSize' => 10,
-            ],
-            'sort' => [
-                'defaultOrder' => [
-                    'created_at' => SORT_DESC,
-                    'title' => 'simon'
-                ]
             ]
         ]);
         $provide->prepare();

@@ -54,7 +54,7 @@ class ArticleController extends Controller
             $article_ip->save();
             //记录我的点击
             $my_click = new MyClick();
-            $my_click->user_id = \Yii::$app->user->id;
+            $my_click->user_id = $user_id;
             $my_click->article_id = $id;
             if(false == $my_click->save()){
                 var_dump($model->getFirstErrors());

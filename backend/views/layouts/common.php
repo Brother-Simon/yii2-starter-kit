@@ -170,6 +170,12 @@ $bundle = BackendAsset::register($this);
                             'visible'=>Yii::$app->user->can('administrator')
                         ],
                         [
+                            'label'=>Yii::t('backend', '广告管理'),
+                            'icon'=>'<i class="fa fa-money"></i>',
+                            'url'=>['/ad/index'],
+                            'visible'=>Yii::$app->user->can('administrator')
+                        ],
+                        [
                             'label'=>Yii::t('backend', '系统管理'),
                             'options' => ['class' => 'header']
                         ],

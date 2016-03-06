@@ -28,8 +28,16 @@ class UserCommission extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['commission'], 'number'],
-            [['status'], 'string', 'max' => 45]
+            ['commission', 'number', 'max'=>200, 'tooBig'=>'最高提现金额不能超过200元'],
+            ['commission', 'number', 'min'=>50, 'tooSmall'=>'提现最低金额不能低于50元'],
+            [['status'], 'string', 'max' => 45],
+            ['commission', function ($attribute, $params) {
+                if($this->$attribute > \Yii::$app->user->getIdentity()->userProfile['total_commission']){
+                    $this->addError($attribute, '提现金额必须小于可提现金额！');
+
+                }
+            }],
+
         ];
     }
 
