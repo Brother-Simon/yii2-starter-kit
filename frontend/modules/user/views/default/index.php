@@ -6601,32 +6601,15 @@ height:0
       <li>
         <label> 真实姓名：</label>
       </li>
-      <li> <?php echo $model->getModel('profile')['truename'];?>&nbsp;</li>
+      <li> <?php echo $model->getModel('account')['username'];?>&nbsp;</li>
     </ul>
   </div>
   <div class="rows">
     <ul class="cols-l3r7">
       <li>
-        <label> 手机号：</label>
+        <label> 微信账号：</label>
       </li>
-      <li> <?php echo $model->getModel('profile')['tel'];?>&nbsp;</li>
-    </ul>
-  </div>
-
-  <div class="rows">
-    <ul class="cols-l3r7">
-      <li>
-        <label> 支付宝账号：</label>
-      </li>
-      <li> <?php echo $model->getModel('account')['email'];?>&nbsp;</li>
-    </ul>
-  </div>
-   <div class="rows">
-    <ul class="cols-l3r7">
-      <li>
-        <label> 收款二维码：</label>
-      </li>
-      <li> <img src="/<?php echo $model->getModel('profile')['avatar_path'];?>"/></li>
+      <li> <?php echo $model->getModel('account')['wechat'];?>&nbsp;</li>
     </ul>
   </div>
   <a class="btn-one btn-gray mt_20" href="<?php echo Url::toRoute('default/change-profile')?>" >编辑个人信息</a> </div>

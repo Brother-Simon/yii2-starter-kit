@@ -11,7 +11,7 @@ $this->beginContent('@frontend/views/layouts/_clear.php')
 
 
     <?php echo $content ?>
-<div class="xfk">   
+<div class="xfk" id="js_xfk">
 <ul>
 <li><a href="<?= BaseUrl::toRoute('/learn');?>"><img src="/frontend/web/img/a1.png"/><br/><span>新手学堂</span></a></li>
 <li><a href="<?= BaseUrl::toRoute('/user');?>"><img src="/frontend/web/img/a2.png"/><br/><span>会员中心</span></a></li>

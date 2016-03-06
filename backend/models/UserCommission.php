@@ -3,7 +3,7 @@
 namespace backend\models;
 
 use Yii;
-
+use common\models\User;
 /**
  * This is the model class for table "user_commission".
  *
@@ -55,5 +55,13 @@ class UserCommission extends \yii\db\ActiveRecord
     public static function find()
     {
         return new UserCommissionQuery(get_called_class());
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['user_id' => 'id']);
     }
 }

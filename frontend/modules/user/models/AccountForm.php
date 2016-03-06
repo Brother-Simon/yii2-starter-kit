@@ -13,7 +13,7 @@ class AccountForm extends Model
     public $email;
     public $password;
     public $password_confirm;
-
+    public $wechat;
     private $user;
 
     public function setUser($user)
@@ -21,6 +21,7 @@ class AccountForm extends Model
         $this->user = $user;
         $this->email = $user->email;
         $this->username = $user->username;
+        $this->wechat = $user->wechat;
     }
 
     /**

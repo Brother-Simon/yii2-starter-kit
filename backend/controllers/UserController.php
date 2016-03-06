@@ -81,15 +81,28 @@ class UserController extends Controller
      */
     public function actionUpdate($id)
     {
+//         var_dump(ArrayHelper::map(Yii::$app->authManager->getRoles(), 'name', 'name'));die();
         $model = new UserForm();
         $model->setModel($this->findModel($id));
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         }
+        $roles = ArrayHelper::map(Yii::$app->authManager->getRoles(), 'name', 'name');
 
+        foreach ($roles as $key=>$item){
+            if($item == 'administrator'){
+                unset($roles[$key]);
+            }
+            if($item == 'manager'){
+                $roles[$key] = '成为vip';
+            }
+            if($item == 'user'){
+                $roles[$key] = '普通用户';
+            }
+        }
         return $this->render('update', [
             'model' => $model,
-            'roles' => ArrayHelper::map(Yii::$app->authManager->getRoles(), 'name', 'name')
+            'roles' => $roles
         ]);
     }
 

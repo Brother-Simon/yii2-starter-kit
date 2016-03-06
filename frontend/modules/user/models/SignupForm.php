@@ -29,8 +29,8 @@ class SignupForm extends Model
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'filter', 'filter' => 'trim'],
-            ['email', 'required'],
-            ['email', 'email'],
+            ['email', 'required', 'message' => 'email必须填写'],
+            ['email', 'email', 'message' => 'email格式不正确'],
             ['email', 'unique',
                 'targetClass'=> '\common\models\User',
                 'message' => Yii::t('frontend', '这个邮箱已经被注册了。')

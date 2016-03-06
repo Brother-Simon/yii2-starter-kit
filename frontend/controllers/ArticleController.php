@@ -11,6 +11,8 @@ use yii\web\NotFoundHttpException;
 use frontend\models\ArticleIp;
 use frontend\models\MyClick;
 use frontend\models\Vip;
+use backend\models\Ad;
+
 /**
  * @author Eugene Terentev <eugene@terentev.net>
  */
@@ -38,12 +40,10 @@ class ArticleController extends Controller
     {
 
          $model = Article::find()->published()->andWhere(['id'=>$id])->one();
+
          if(empty($model)){
              return false;
          }
-//         if (!$model) {
-//             throw new NotFoundHttpException;
-//         }
         $article_ip = new ArticleIp();
         $ip = \Yii::$app->request->userIP;
         $article_ip->ip = $ip;
@@ -62,13 +62,21 @@ class ArticleController extends Controller
 
             //计算绩效
             $vip = UserProfile::findOne(['user_id'=>$user_id]);
-            $vip->updateCounters(['total_commission'=>+$model['commission']]);
+            if(Yii::$app->authManager->getRolesByUser(Yii::$app->user->id) == 'manager'){
+                $add_commission = $model['commission'] * 2;
+            }else{
+                $add_commission = $model['commission'];
+            }
+            $vip->updateCounters(['total_commission'=>+$add_commission]);
 
         }
         //我的点击统计
 
         $viewFile = $model->view ?: 'view';
-        return $this->render('index', ['model'=>$model]);
+        return $this->render('index', [
+            'model'=>$model,
+            'ad' => Ad::findOne(['id'=>$model['ad_id']])
+        ]);
     }
 
     public function actionAttachmentDownload($id)

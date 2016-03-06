@@ -20,8 +20,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'user_id',
+            [
+                'attribute'=>'user_id',
+                'value'=>function ($model) {
+//                 return (new \backend\models\UserCommission())->user->wechat;
+                    return 1;
+                },
+                'filter'=>\yii\helpers\ArrayHelper::map(\common\models\User::find()->all(), 'id', 'wechat'),
+                'label'=>'目录'
+            ],
             'commission',
             'status',
 

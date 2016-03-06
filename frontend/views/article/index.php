@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use common\models\Article;
 /* @var $this yii\web\View */
 $this->title = Yii::t('frontend', 'Articles')
 ?>
@@ -16,7 +17,7 @@ $this->title = Yii::t('frontend', 'Articles')
   <?php echo Html::tag('p', Html::encode($model->body))?>
   </div>
 </article>
-<!-- 正文 end --> 
+<!-- 正文 end -->
 
 
 <!-- 相关阅读 start -->
@@ -25,24 +26,21 @@ $this->title = Yii::t('frontend', 'Articles')
 </div>
 <div class="m-txt-list">
   <ul>
-    <li><a href="#">
-      <p>推荐阅读一</p>
+  <?php if(!empty($model['recommend1_id'])):?>
+    <li><a href="<?= \yii\helpers\Url::toRoute('/article/'.$model['recommend1_id'].'-'.\Yii::$app->user->id) ?>">
+      <p><?php echo Article::findOne(['id'=>$model['recommend1_id']])->title?></p>
       </a></li>
-    <li><a href="#">
-      <p>推荐阅读一</p>
+  <?php endif;?>
+  <?php if(!empty($model['recommend2_id'])):?>
+    <li><a href="<?= \yii\helpers\Url::toRoute('/article/'.$model['recommend2_id'].'-'.\Yii::$app->user->id) ?>">
+      <p><?php echo Article::findOne(['id'=>$model['recommend2_id']])->title?></p>
       </a></li>
-    <li><a href="#">
-      <p>推荐阅读一</p>
+  <?php endif;?>
+  <?php if(!empty($model['recommend3_id'])):?>
+    <li><a href="<?= \yii\helpers\Url::toRoute('/article/'.$model['recommend3_id'].'-'.\Yii::$app->user->id) ?>">
+      <p><?php echo Article::findOne(['id'=>$model['recommend3_id']])->title?></p>
       </a></li>
-    <li><a href="#">
-      <p>推荐阅读一</p>
-      </a></li>
-    <li><a href="#">
-      <p>推荐阅读一</p>
-      </a></li>
-    <li><a href="#">
-      <p>推荐阅读一</p>
-      </a></li>
+  <?php endif;?>
   </ul>
 </div>
 <div class="wycs"></div>
@@ -52,8 +50,12 @@ function closed()
  var aaa=document.getElementById("ad");
  aaa.style.display="none"
 }
+document.addEventListener("DOMContentLoaded", function() {
+	document.getElementById("js_xfk").style.display = 'none';
+}, false);
+
 </script>
 <div id="ad">
-  <div class="guang" > <a href="#"> <img src="images/ggg1.png"/> </a> </div>
+  <div class="guang" > <a href="#"> <img src="<?php echo $ad['img_base_url'].'/'.$ad['img_path']?>"/> </a> </div>
   <div class="guanb"> <img src="/frontend/web/img/ad_app_top_close.png" onclick="closed();"/> </div>
 </div>

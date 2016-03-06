@@ -117,7 +117,7 @@ class Article extends \yii\db\ActiveRecord
             }],
             [['published_at'], 'filter', 'filter' => 'strtotime', 'skipOnEmpty' => true],
             [['category_id'], 'exist', 'targetClass' => ArticleCategory::className(), 'targetAttribute'=>'id'],
-            [['author_id', 'updater_id', 'status'], 'integer'],
+            [['author_id', 'updater_id', 'status', 'ad_id', 'recommend1_id', 'recommend2_id', 'recommend3_id'], 'integer'],
             [['slug', 'thumbnail_base_url', 'thumbnail_path'], 'string', 'max' => 1024],
             [['title'], 'string', 'max' => 512],
             [['commission'], 'required'],

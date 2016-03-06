@@ -21,6 +21,31 @@ use yii\bootstrap\ActiveForm;
         ->hint(Yii::t('backend', 'If you\'ll leave this field empty, slug will be generated automatically'))
         ->textInput(['maxlength' => true]) ?>
 
+    <?php echo $form->field($model, 'ad_id')->dropDownList(\yii\helpers\ArrayHelper::map(
+            $ads,
+            'id',
+            'title'
+        ), ['prompt'=>'']) ?>
+
+    <?php echo $form->field($model, 'recommend1_id')->dropDownList(\yii\helpers\ArrayHelper::map(
+            $articles,
+            'id',
+            'title'
+        ), ['prompt'=>'']) ?>
+
+    <?php echo $form->field($model, 'recommend2_id')->dropDownList(\yii\helpers\ArrayHelper::map(
+            $articles,
+            'id',
+            'title'
+        ), ['prompt'=>'']) ?>
+
+    <?php echo $form->field($model, 'recommend3_id')->dropDownList(\yii\helpers\ArrayHelper::map(
+            $articles,
+            'id',
+            'title'
+        ), ['prompt'=>'']) ?>
+
+
     <?php echo $form->field($model, 'category_id')->dropDownList(\yii\helpers\ArrayHelper::map(
             $categories,
             'id',

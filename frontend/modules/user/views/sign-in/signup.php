@@ -834,7 +834,7 @@ header .btn-return {
      <?= Html::activeInput('text', $model, 'username', ['placeholder' => '请输入您的姓名', 'class'=>'three-character']) ?>
         </div>
       <div class="input-item"> <i class="shouji"></i>
-           <?= Html::activeInput('text', $model, 'email', ['placeholder' => '请请输入手机号,做为登录的用户名您的姓名', 'class'=>'three-character']) ?>
+           <?= Html::activeInput('text', $model, 'email', ['placeholder' => '请输入邮箱', 'class'=>'three-character']) ?>
 
       </div>
       	<div  class="input-item"> <i class="mima"></i>
@@ -844,10 +844,10 @@ header .btn-return {
 
     </div>
     <?php if(!empty($user)){
-        echo Html::errorSummary($user, ['class' => 'errors']);
+        echo Html::errorSummary($user, ['class' => 'errors', 'header'=>'修复这几个错误：']);
     }?>
     <?php if(!empty($model)){
-        echo Html::errorSummary($model, ['class' => 'errors']);
+        echo Html::errorSummary($model, ['class' => 'errors', 'header'=>'修复这几个错误：']);
     }?>
       <?php echo Html::submitButton(Yii::t('frontend', '注册'), ['class' => 'btn-blue', 'name' => 'signup-button', 'style'=>['width'=>'96%','border'=>'0 none','margin'=>'25px auto']]) ?>
 <?= Html::endForm() ?>

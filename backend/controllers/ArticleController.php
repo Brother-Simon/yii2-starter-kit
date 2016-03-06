@@ -9,6 +9,7 @@ use \common\models\ArticleCategory;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\models\Ad;
 
 /**
  * ArticleController implements the CRUD actions for Article model.
@@ -52,13 +53,15 @@ class ArticleController extends Controller
     public function actionCreate()
     {
         $model = new Article();
-        
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
                 'categories' => ArticleCategory::find()->active()->all(),
+                'ads' => Ad::find()->all(),
+                'articles' => Article::find()->all()
             ]);
         }
     }
@@ -78,6 +81,8 @@ class ArticleController extends Controller
             return $this->render('update', [
                 'model' => $model,
                 'categories' => ArticleCategory::find()->active()->all(),
+                'ads' => Ad::find()->all(),
+                'articles' => Article::find()->all()
             ]);
         }
     }

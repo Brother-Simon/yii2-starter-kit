@@ -16,7 +16,7 @@ class UserForm extends Model
     public $password;
     public $status;
     public $roles;
-
+    public $wechat;
     private $model;
 
     /**
@@ -45,7 +45,7 @@ class UserForm extends Model
 
             ['password', 'required', 'on'=>'create'],
             ['password', 'string', 'min' => 6],
-
+            ['wechat', 'string'],
             [['status'], 'boolean'],
             [['roles'], 'each',
                 'rule' => ['in', 'range' => ArrayHelper::getColumn(
@@ -74,6 +74,7 @@ class UserForm extends Model
         $this->username = $model->username;
         $this->email = $model->email;
         $this->status = $model->status;
+        $this->wechat = $model->wechat;
         $this->model = $model;
         $this->roles = ArrayHelper::getColumn(
             Yii::$app->authManager->getRolesByUser($model->getId()),
@@ -103,6 +104,7 @@ class UserForm extends Model
             $model->username = $this->username;
             $model->email = $this->email;
             $model->status = $this->status;
+            $model->wechat = $this->wechat;
             if ($this->password) {
                 $model->setPassword($this->password);
             }

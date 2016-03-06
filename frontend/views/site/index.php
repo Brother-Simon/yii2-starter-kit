@@ -18,7 +18,7 @@ $this->title = 'web开发者的该驻足的地方！';
     <div class="face-box">
       <div class="img-box"> <a href="#"> <img src="/frontend/web/img/66_07.png"  /> </a> </div>
     </div>
-     <h3>13244444444</h3>
+     <h3><?php echo \Yii::$app->user->identity->username?></h3>
 
   </div>
   <div class="user-center-bottom">
@@ -48,7 +48,7 @@ $this->title = 'web开发者的该驻足的地方！';
       <div class="img-box"><img src="/frontend/web/img/car.jpg"></div>
       <h4><?php echo $item['title']; ?></h4>
       <em>点击可赚取<?= Html::tag('span', Html::encode($item['commission']), ['class' => 'red']) ?></em>
-      <em><span><?php echo Yii::$app->formatter->asDatetime($item['created_at']) ?></span><i class="ico-comment huifu comment_0_6577194">立即转发</i></em></a>
+      <em><span><?php echo Yii::$app->formatter->asDatetime($item['created_at'],'php:m/d/Y H:i:s') ?></span><i class="ico-comment huifu comment_0_6577194">立即转发</i></em></a>
     </li>
    <?php endforeach; ?>
   </ul>

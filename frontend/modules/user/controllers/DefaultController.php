@@ -10,7 +10,8 @@ use trntv\filekit\actions\UploadAction;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
-
+use backend\models\UserForm;
+use common\models\User;
 class DefaultController extends Controller
 {
     public $layout = false;
@@ -41,7 +42,7 @@ class DefaultController extends Controller
      */
     public function behaviors()
     {
-        return [ 
+        return [
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
@@ -68,7 +69,7 @@ class DefaultController extends Controller
                 'profile' => Yii::$app->user->identity->userProfile
             ]
         ]);
-        
+
         return $this->render('index', ['model'=>$model]);
     }
 
@@ -77,26 +78,49 @@ class DefaultController extends Controller
      */
     public function actionChangeProfile()
     {
-        $accountModel = new AccountForm();
-        $accountModel->setUser(Yii::$app->user->identity);
+//         $accountModel = new AccountForm();
+//         $accountModel->setUser(Yii::$app->user->identity);
 
-        $model = new MultiModel([
-            'models' => [
-                'account' => $accountModel,
-                'profile' => Yii::$app->user->identity->userProfile
-            ]
-        ]);
+//         $model = new MultiModel([
+//             'models' => [
+//                 'account' => $accountModel,
+//                 'profile' => Yii::$app->user->identity->userProfile
+//             ]
+//         ]);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('alert', [
-                'options' => ['class'=>'alert-success'],
-                'body' => Yii::t('frontend', 'Your account has been successfully saved')
+//         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//             Yii::$app->session->setFlash('alert', [
+//                 'options' => ['class'=>'alert-success'],
+//                 'body' => Yii::t('frontend', 'Your account has been successfully saved')
+//             ]);
+//             return $this->refresh();
+//         }
+//         return $this->render('change', ['model'=>$model]);
+            $model = new UserForm();
+            $model->setModel($this->findModel(\Yii::$app->user->id));
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['index']);
+            }
+
+            return $this->render('change', [
+                'model' => $model,
             ]);
-            return $this->refresh();
-        }
-        return $this->render('change', ['model'=>$model]);
     }
-    
+    /**
+     * Finds the User model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return User the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = User::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
     /**
      * Updates an existing User model.
      * @param integer $id

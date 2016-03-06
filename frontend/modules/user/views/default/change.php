@@ -7403,29 +7403,21 @@ header .btn-return {
     <div class="input-box">
 
       	<div  class="input-item"> <i class="yonghu"></i>
-        <input  type="password" placeholder="真实姓名" class="three-character" />
-         </div>
+      	<?= Html::activeInput('text', $model, 'username', ['placeholder' => '用户姓名', 'class'=>'three-character']) ?>
+      	</div>
          <div  class="input-item"> <i class="shouji"></i>
-        <input  type="password" placeholder="支付宝账号" class="three-character" />
-         </div>
-
-    <div  class="input-item">上传收款图<?php echo $form->field($model->getModel('profile'), 'picture')->widget(
-        Upload::classname(),
-        [
-            'url' => ['avatar-upload']
-        ]
-    )?>
-
-
-         </div>
-
+         <?= Html::activeInput('text', $model, 'wechat', ['placeholder' => '微信账号', 'class'=>'three-character']) ?>
+      	</div>
+      	<div  class="input-item"> <i class="shouji"></i>
+      	<?= Html::activeInput('password', $model, 'password', ['placeholder' => '密码', 'class'=>'three-character']) ?>
+		</div>
     </div>
-    <input type="submit" >
-      <a href="javascript:void(0);" id="a_submit" class="btn-blue">提交修改</a>
+    <?= Html::submitButton('确定', ['class' => 'btn-blue', 'id'=>'a_submit', 'style'=>['width'=>'98%']]) ?>
+
     <?php ActiveForm::end(); ?>
     <?php if($model->getModel('profile')->hasErrors()):?>
 <script>
-alert('<?php echo array_values($model->getFirstErrors())[0]?>');
+alert('<?php var_dump(array_values($model->getFirstErrors()))?>');
 </script>
 <?php endif;?>
 </div>
