@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use common\models\Article;
 /* @var $this yii\web\View */
-$this->title = Yii::t('frontend', 'Articles')
+$this->title = $model->title;
 ?>
 <header> <a class="btn-return" href="javascript:history.back();"></a><?php echo $model->title;?> </header>
 

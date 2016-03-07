@@ -120,7 +120,7 @@ class Article extends \yii\db\ActiveRecord
             [['author_id', 'updater_id', 'status', 'ad_id', 'recommend1_id', 'recommend2_id', 'recommend3_id'], 'integer'],
             [['slug', 'thumbnail_base_url', 'thumbnail_path'], 'string', 'max' => 1024],
             [['title'], 'string', 'max' => 512],
-            [['commission'], 'required'],
+            [['commission', 'total_commission', 'already_commission'], 'number', 'min' => 0.01],
             [['view'], 'string', 'max' => 255],
             [['attachments', 'thumbnail'], 'safe']
         ];
@@ -145,6 +145,7 @@ class Article extends \yii\db\ActiveRecord
             'recommend3_id' => Yii::t('common', '推荐位置3'),
             'attachments' => Yii::t('common', '附件'),
             'commission' => Yii::t('common', '佣金'),
+            'total_commission' => Yii::t('common', '总佣金'),
             'updater_id' => Yii::t('common', '更新时间'),
             'category_id' => Yii::t('common', '目录'),
             'status' => Yii::t('common', '状态'),

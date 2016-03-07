@@ -16,7 +16,9 @@ $this->title = 'web开发者的该驻足的地方！';
 
   <div class="content">
     <div class="face-box">
-      <div class="img-box"> <a href="#"> <img src="/frontend/web/img/66_07.png"  /> </a> </div>
+      <div class="img-box"> <a href="#"> 
+      <img src="/frontend/web/img/66_0<?php if(\Yii::$app->authManager->getRolesByUser(\Yii::$app->user->id) == 'manager'):?>7<?php else:?>3<?php endif;?>.png"  /> 
+      </a> </div>
     </div>
      <h3><?php echo \Yii::$app->user->identity->username?></h3>
 
@@ -24,8 +26,8 @@ $this->title = 'web开发者的该驻足的地方！';
   <div class="user-center-bottom">
     <ul>
       <li><a class="remove-a" href="我的点击.htm">
-        <h5> <?php echo \Yii::$app->user->identity->userProfile->today_commission;?></h5>
-        <em>今日收入</em> </a></li>
+        <h5> <?php echo \Yii::$app->user->identity->userProfile->can_commission;?></h5>
+        <em>可提现金额</em> </a></li>
 <!--       <li><a class="remove-a" href="提取佣金.htm"> -->
 <!--         <h5> 0</h5> -->
 <!--         <em>可提佣金</em> </a></li> -->
@@ -45,9 +47,15 @@ $this->title = 'web开发者的该驻足的地方！';
   <ul>
    <?php foreach ($article as $item): ?>
     <li><a href="<?= \yii\helpers\Url::toRoute('/article/'.$item['id'].'-'.\Yii::$app->user->id) ?>">
-      <div class="img-box"><img src="/frontend/web/img/car.jpg"></div>
+      <div class="img-box"><img src="<?php echo $item['thumbnail_base_url'].'/'.$item['thumbnail_path']?>"></div>
       <h4><?php echo $item['title']; ?></h4>
-      <em>点击可赚取<?= Html::tag('span', Html::encode($item['commission']), ['class' => 'red']) ?></em>
+      <em>点击可赚取<?= Html::tag('span', Html::encode($item['commission']), ['class' => 'red']) ?> 
+      <?php if($item['already_commission'] < $item['total_commission']):?>
+      	剩余<?= Html::tag('span', Html::encode($item['total_commission'] - $item['already_commission']), ['class' => 'red']) ?>元
+      <?php else:?>
+      	已无剩余IP
+      <?php endif;?>
+      	</em>
       <em><span><?php echo Yii::$app->formatter->asDatetime($item['created_at'],'php:m/d/Y H:i:s') ?></span><i class="ico-comment huifu comment_0_6577194">立即转发</i></em></a>
     </li>
    <?php endforeach; ?>

@@ -6,7 +6,7 @@
 $this->title = Yii::t('backend', '创建文章', [
     'modelClass' => 'Article',
 ]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Articles'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', '文章管理'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="article-create">

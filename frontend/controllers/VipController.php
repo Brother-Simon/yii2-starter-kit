@@ -59,7 +59,7 @@ class VipController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $model->user_id = Yii::$app->user->id;
             if($model->save()){
-                $user_profile->total_commission = $user_profile->total_commission - $model->commission;
+                $user_profile->can_commission = $user_profile->can_commission - $model->commission;
                 $user_profile->save();
                 return $this->redirect(['vip/get-pay-success']);
             }else{

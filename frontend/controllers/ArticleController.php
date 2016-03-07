@@ -39,7 +39,7 @@ class ArticleController extends Controller
     public function actionView($id,$user_id)
     {
 
-         $model = Article::find()->published()->andWhere(['id'=>$id])->one();
+         $model = Article::find()->andWhere(['id'=>$id])->one();
 
          if(empty($model)){
              return false;
@@ -48,28 +48,36 @@ class ArticleController extends Controller
         $ip = \Yii::$app->request->userIP;
         $article_ip->ip = $ip;
         $article_ip->article_id = $id;
-        //如果为空则统计绩效
-        if(empty($article_ip->findOne(['ip'=>$ip,'article_id'=>$id]))){
-            //保存ip
-            $article_ip->save();
-            //记录我的点击
-            $my_click = new MyClick();
-            $my_click->user_id = $user_id;
-            $my_click->article_id = $id;
-            if(false == $my_click->save()){
-                var_dump($model->getFirstErrors());
-            };
-
-            //计算绩效
-            $vip = UserProfile::findOne(['user_id'=>$user_id]);
-            if(Yii::$app->authManager->getRolesByUser(Yii::$app->user->id) == 'manager'){
-                $add_commission = $model['commission'] * 2;
-            }else{
-                $add_commission = $model['commission'];
+        if($model['already_commission'] < $model['total_commission']){
+            //如果为空则统计绩效
+            if(empty($article_ip->findOne(['ip'=>$ip,'article_id'=>$id]))){
+                //保存ip
+                $article_ip->save();
+                //记录我的点击
+                $my_click = new MyClick();
+                $my_click->user_id = $user_id;
+                $my_click->article_id = $id;
+                if(false == $my_click->save()){
+                    var_dump($my_click->getFirstErrors());
+                };
+                //减少一总销量
+                $model['already_commission'] += $model['commission'];
+                if(false == $model->save()){
+                    var_dump($model->getFirstErrors());
+                    die('增加已用佣金失败');
+                }
+                //计算绩效
+                $vip = UserProfile::findOne(['user_id'=>$user_id]);
+                if(\Yii::$app->authManager->getRolesByUser(\Yii::$app->user->id) == 'manager'){
+                    $add_commission = $model['commission'] * 2;
+                }else{
+                    $add_commission = $model['commission'];
+                }
+                $vip->updateCounters(['total_commission'=>+$add_commission]);
+                $vip->updateCounters(['can_commission'=>+$add_commission]);
             }
-            $vip->updateCounters(['total_commission'=>+$add_commission]);
-
         }
+        
         //我的点击统计
 
         $viewFile = $model->view ?: 'view';

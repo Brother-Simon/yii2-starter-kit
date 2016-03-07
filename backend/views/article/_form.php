@@ -18,7 +18,7 @@ use yii\bootstrap\ActiveForm;
     <?php echo $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'slug')
-        ->hint(Yii::t('backend', 'If you\'ll leave this field empty, slug will be generated automatically'))
+        ->hint(Yii::t('backend', '此处不需添加，系统会自动生成。'))
         ->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'ad_id')->dropDownList(\yii\helpers\ArrayHelper::map(
@@ -88,6 +88,8 @@ use yii\bootstrap\ActiveForm;
     <?php echo $form->field($model, 'view')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'commission') ?>
+
+    <?php echo $form->field($model, 'total_commission') ?>
 
     <?php echo $form->field($model, 'status')->checkbox() ?>
 

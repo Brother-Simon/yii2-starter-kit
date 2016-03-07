@@ -34,6 +34,6 @@ $this->params['breadcrumbs'][] = $this->title;
       	<?= Html::activeInput('text', $model, 'commission', ['placeholder' => '请输入提现金额']) ?>
         </div>
     </div>
-<?= Html::submitButton('登录', ['class' => 'btn-blue', 'id'=>'a_submit', 'style'=>['width'=>'98%']]) ?>
+<?= Html::submitButton('提取', ['class' => 'btn-blue', 'id'=>'a_submit', 'style'=>['width'=>'98%']]) ?>
 <?= Html::endForm() ?>
 </div>
