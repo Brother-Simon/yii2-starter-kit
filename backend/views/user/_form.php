@@ -17,10 +17,10 @@ use yii\bootstrap\ActiveForm;
         <?php echo $form->field($model, 'username') ?>
         <?php echo $form->field($model, 'email') ?>
         <?php echo $form->field($model, 'password')->passwordInput() ?>
-        <?php echo $form->field($model, 'status')->label(Yii::t('backend', 'Active'))->checkbox() ?>
+        <?php echo $form->field($model, 'status')->label(Yii::t('backend', '启用'))->checkbox() ?>
         <?php echo $form->field($model, 'roles')->checkboxList($roles) ?>
         <div class="form-group">
-            <?php echo Html::submitButton(Yii::t('backend', 'Save'), ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+            <?php echo Html::submitButton(Yii::t('backend', '保存'), ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
         </div>
     <?php ActiveForm::end(); ?>
 

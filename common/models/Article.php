@@ -132,19 +132,25 @@ class Article extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('common', 'ID'),
-            'slug' => Yii::t('common', 'Slug'),
-            'title' => Yii::t('common', 'Title'),
-            'body' => Yii::t('common', 'Body'),
-            'view' => Yii::t('common', 'Article View'),
-            'thumbnail' => Yii::t('common', 'Thumbnail'),
-            'author_id' => Yii::t('common', 'Author'),
-            'updater_id' => Yii::t('common', 'Updater'),
-            'category_id' => Yii::t('common', 'Category'),
-            'status' => Yii::t('common', 'Published'),
-            'published_at' => Yii::t('common', 'Published At'),
-            'created_at' => Yii::t('common', 'Created At'),
-            'updated_at' => Yii::t('common', 'Updated At')
+            'id' => Yii::t('common', '序列表'),
+            'slug' => Yii::t('common', '标识'),
+            'title' => Yii::t('common', '标题'),
+            'body' => Yii::t('common', '内容'),
+            'ad_id' => Yii::t('common', '广告'),
+            'view' => Yii::t('common', '链接，无需填写'),
+            'thumbnail' => Yii::t('common', '缩略图'),
+            'author_id' => Yii::t('common', '作者'),
+            'recommend1_id' => Yii::t('common', '推荐位置1'),
+            'recommend2_id' => Yii::t('common', '推荐位置2'),
+            'recommend3_id' => Yii::t('common', '推荐位置3'),
+            'attachments' => Yii::t('common', '附件'),
+            'commission' => Yii::t('common', '佣金'),
+            'updater_id' => Yii::t('common', '更新时间'),
+            'category_id' => Yii::t('common', '目录'),
+            'status' => Yii::t('common', '状态'),
+            'published_at' => Yii::t('common', '发布时间'),
+            'created_at' => Yii::t('common', '创建时间'),
+            'updated_at' => Yii::t('common', '更新时间')
         ];
     }
 

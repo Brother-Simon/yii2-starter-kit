@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use backend\models\UserCommission;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
@@ -19,16 +19,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'user_id',
+            [
+                'attribute' => 'user_id',
+                'label' => '用户id'
+                
+            ],
             [
                 'attribute'=>'user_id',
                 'value'=>function ($model) {
-//                 return (new \backend\models\UserCommission())->user->wechat;
-                    return 1;
+                    return $model->user['wechat'];
                 },
                 'filter'=>\yii\helpers\ArrayHelper::map(\common\models\User::find()->all(), 'id', 'wechat'),
-                'label'=>'目录'
+                'label'=>'微信账号'
             ],
             'commission',
             'status',

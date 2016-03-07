@@ -43,7 +43,7 @@ class User extends \yii\db\ActiveRecord
         return [
             [['auth_key', 'access_token', 'password_hash', 'email'], 'required'],
             [['status', 'created_at', 'updated_at', 'logged_at'], 'integer'],
-            [['username', 'auth_key'], 'string', 'max' => 32],
+            [['username', 'auth_key', 'wechat'], 'string', 'max' => 32],
             [['access_token'], 'string', 'max' => 40],
             [['password_hash', 'password_reset_token', 'oauth_client', 'oauth_client_user_id', 'email'], 'string', 'max' => 255]
         ];
